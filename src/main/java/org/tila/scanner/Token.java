@@ -1,9 +1,27 @@
 package org.tila.scanner;
 
+/**
+ * Token Example : (TokenType: INT, value: 10, isCheckRegrex: true, line: 3)
+ */
 public class Token {
+    /**
+     * The type of token. Example: ID, NUMBER, etc.
+     */
     private TokenType tokenType;
+
+    /**
+     * Text in source code
+     */
     private String value;
+
+    /**
+     * identify this token by regular expression or match exact string
+     */
     private boolean isCheckRegrex;
+
+    /**
+     * The line number where this token appears in source code
+     */
     private int line;
 
     public Token(TokenType tokenType, String value, boolean isCheckRegrex) {
@@ -42,6 +60,14 @@ public class Token {
 
     public void setCheckRegrex(boolean checkRegrex) {
         isCheckRegrex = checkRegrex;
+    }
+
+    public int getLine() {
+        return line;
+    }
+
+    public void setLine(int line) {
+        this.line = line;
     }
 
     public String toString() {

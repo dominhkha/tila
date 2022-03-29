@@ -6,6 +6,9 @@ import org.tila.scanner.TokenType;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+/**
+ * All built-in tokens
+ */
 public final class ConstantToken {
     public static final Token begin_token = new Token(TokenType.BEGIN, "begin", false);
     public static final Token end_token = new Token(TokenType.END, "end", false);
@@ -29,6 +32,10 @@ public final class ConstantToken {
     public static final Token number_token = new Token(TokenType.NUMBER, "0|[1-9][0-9]*", true);
     public static final Token id_token = new Token(TokenType.ID, "([a-z]|[A-Z])([a-z]|[A-Z]|[0-9])*", true);
 
+    /**
+     * List of built-in tokens ordered by text representation priority.
+     * For example, print_token must be ordered before id_token
+     */
     public static final ArrayList<Token> tokenList = new ArrayList<Token>(Arrays.asList(begin_token, end_token, print_token, add_token,
             multiply_token, subtract_token, pow_token, int_token, open_bracket, close_bracket, while_token, do_token, semicolon_token, equal_token, number_token, id_token));
 }

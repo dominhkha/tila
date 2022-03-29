@@ -6,22 +6,38 @@ import org.tila.utils.Formater;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Scanner;
 
 public class MyScanner {
-    private String inputCode;
-    //    private Token currentToken;
+    /**
+     * input code as text file
+     */
+    private final String inputCode;
+    /**
+     * number of character in text file
+     */
+    private final int codeLength;
+    /**
+     * the present index while iterating inputCode
+     */
     private int currentIndex;
+    /**
+     * the present line number while iteration inputCode
+     */
     private int currentLine;
-    private int codeLength;
+    /**
+     * List of result tokens
+     */
     private ArrayList<Token> tokens;
+    /**
+     * replace these list of values by additional white space.
+     * Example: ';' will be replaced by ' ; '
+     */
     private final ArrayList<String> formatReplacements = new ArrayList<String>(Arrays.asList(ConstantToken.add_token.getValue(),
             ConstantToken.multiply_token.getValue(), ConstantToken.subtract_token.getValue(), ConstantToken.pow_token.getValue(),
             ConstantToken.equal_token.getValue(), ConstantToken.open_bracket.getValue(), ConstantToken.close_bracket.getValue(),
             ConstantToken.semicolon_token.getValue()));
 
     public MyScanner(String inputCode) {
-//        this.currentToken = null;
         this.inputCode = Formater.replaceWithAdditionBlank(inputCode, this.formatReplacements);
         this.currentIndex = 0;
         this.currentLine = 1;
@@ -35,11 +51,11 @@ public class MyScanner {
         fileUtils.readFile();
         String inputCode = fileUtils.getContent();
         MyScanner myScanner = new MyScanner(inputCode);
-        myScanner.readToken();
+        myScanner.readTokens();
         System.out.println(myScanner);
     }
 
-    public boolean readToken() {
+    public void readTokens() {
         while (!this.isEndOfCode()) {
             char currentChar = this.inputCode.charAt(this.currentIndex);
             if (Arrays.asList(' ', '\r', '\t', '\n').contains(currentChar)) {
@@ -47,6 +63,7 @@ public class MyScanner {
             } else {
                 String currentTokenStr = this.readCurrentTokenStr();
                 Token currentToken = null;
+                // iter over built-in list of tokens, if the current word matches visiting token by regrex or exact string, then break
                 for (int i = 0; i < ConstantToken.tokenList.size(); i++) {
                     Token t = ConstantToken.tokenList.get(i);
                     if (t.isCheckRegrex()) {
@@ -59,16 +76,19 @@ public class MyScanner {
                         break;
                     }
                 }
+
+                // the current word does not match any built-int token
                 if (currentToken == null) {
                     throw new ScannerException("\"" + currentTokenStr + "\" is not recognized!");
                 }
                 this.tokens.add(currentToken);
             }
         }
-        return true;
     }
 
-
+    /**
+     * @return the string starts from current white space to the next white space
+     */
     private String readCurrentTokenStr() {
         StringBuilder result = new StringBuilder();
         char currentChar = this.inputCode.charAt(this.currentIndex);
@@ -81,6 +101,9 @@ public class MyScanner {
         return result.toString();
     }
 
+    /**
+     * ignore all white spaces and go to the next character
+     */
     private void skipWhiteSpace() {
         while (!isEndOfCode()) {
             if (Arrays.asList(' ', '\r', '\t', '\n').contains(this.inputCode.charAt(this.currentIndex))) {

@@ -1,5 +1,8 @@
 package org.tila.scanner;
 
+/**
+ * all type of built-in tokens
+ */
 public enum TokenType {
     BEGIN,
     END,
