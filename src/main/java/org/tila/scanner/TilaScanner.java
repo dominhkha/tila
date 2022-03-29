@@ -1,13 +1,14 @@
 package org.tila.scanner;
 
 import org.tila.constants.ConstantToken;
+import org.tila.tilaexception.ScannerException;
 import org.tila.utils.FileUtils;
 import org.tila.utils.Formater;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class MyScanner {
+public class TilaScanner {
     /**
      * input code as text file
      */
@@ -37,7 +38,7 @@ public class MyScanner {
             ConstantToken.equal_token.getValue(), ConstantToken.open_bracket.getValue(), ConstantToken.close_bracket.getValue(),
             ConstantToken.semicolon_token.getValue()));
 
-    public MyScanner(String inputCode) {
+    public TilaScanner(String inputCode) {
         this.inputCode = Formater.replaceWithAdditionBlank(inputCode, this.formatReplacements);
         this.currentIndex = 0;
         this.currentLine = 1;
@@ -46,13 +47,15 @@ public class MyScanner {
     }
 
     public static void main(String[] args) {
-        String inputFilePath = "D:\\tila\\local\\input.txt";
+
+//        String inputFilePath = "D:\\tila\\local\\input.txt";
+        String inputFilePath = args[0];
         FileUtils fileUtils = new FileUtils(inputFilePath);
         fileUtils.readFile();
         String inputCode = fileUtils.getContent();
-        MyScanner myScanner = new MyScanner(inputCode);
-        myScanner.readTokens();
-        System.out.println(myScanner);
+        TilaScanner tilaScanner = new TilaScanner(inputCode);
+        tilaScanner.readTokens();
+        System.out.println(tilaScanner);
     }
 
     public void readTokens() {

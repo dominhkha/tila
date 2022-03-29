@@ -1,4 +1,4 @@
-package org.tila.scanner;
+package org.tila.tilaexception;
 
 public class ScannerException extends RuntimeException{
     public ScannerException(){
