@@ -2,7 +2,7 @@
 ## Overview
 The repo contains source code for Tiny Language Compiler.
 
-## Table of Content
+## Table of Contents
 
 * [Overview](#overview)
 * [Getting Started](#getting-started)
@@ -17,7 +17,7 @@ The repo contains source code for Tiny Language Compiler.
 ## Getting started
 ### Prerequisite
 Java >= 1.8
-### Get Repo:
+### Get Repo
 ``git clone https://github.com/dominhkha/tila.git``
 ## Run experiment
 ### Prepare Input
@@ -48,12 +48,12 @@ NUMBER = 0|[1..9][0..9]*
 ```
 An Example of the input file: [local/input.txt](local/input.txt)
 
-### Run:
+### Run
 * Compile:  ``make compile``
 * Run : ``make run inputFile={The full path of input file}``
 * Clean: ``make clean``
 
-### Result:
+### Result
 The results have type, value of each token and the line number where token stays. They will be printed in the console. Such as:
 ```
 (Type: BEGIN, Value: "begin", Line: 1)
@@ -63,4 +63,10 @@ The results have type, value of each token and the line number where token stays
 (Type: INT, Value: "int", Line: 2)
 ...
 ```
+
+### Contributing
+This project welcomes contributions and suggestions.
+### Contact
+@dominhkha
+### Acknowledgements
 
