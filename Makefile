@@ -17,6 +17,6 @@ prepare:
 compile: prepare
 	javac -d classes ${SRCDIR}\\constants\\*.java ${SRCDIR}\\utils\\*.java ${SRCDIR}\\tilaexception\\*.java ${SRCDIR}\\scanner\\*.java
 run:
-	cd classes && java org.tila.scanner.TilaScanner $(inputFile)
+	cd ${CLASSESDIR} && java org.tila.scanner.TilaScanner $(inputFile)
 clean:
 	$(call removedir, ${CLASSESDIR})
