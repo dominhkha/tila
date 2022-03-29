@@ -1,0 +1,7 @@
+begin
+    int x ; int y ; int subtract ;
+    x = 10 ;
+    y = 10 ;
+    subtract=x-y ;
+    print subtract ;
+end
