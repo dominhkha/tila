@@ -21,13 +21,4 @@ Loop			-> while Expr do begin Statements end
 ID = [a..z]|[A..Z] ([a..z]|[A..Z]|[0..9])*
 NUMBER = 0|[1..9][0..9]*
 
-Độ ưu tiên (theo thứ tự giảm dần):
--	Expr trong ngoặc
--	^
--	*
--	–
-
-Kết hợp:
--	 -, *: kết hợp trái
--	^ kết hợp phải
 

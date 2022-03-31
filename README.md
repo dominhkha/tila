@@ -1,28 +1,35 @@
-# Tila: A Tiny Language Compiler
+# Tila Scanner: A Tiny Language Scanner
 ## Overview
-The repo contains source code for Tiny Language Compiler.
+The repo contains source code for Tiny Language Scanner.
 
-## Table of Contents
+[//]: # (## Table of Contents)
 
-* [Overview](#overview)
-* [Getting Started](#getting-started)
-    * [Prerequisites](#prerequisites)
-    * [Get Repo](#get-repo)
+[//]: # ()
+[//]: # (* [Overview]&#40;#overview&#41;)
 
-* [Run experiment](#Run-experiment)
-    * [Prepare Input](#prepare-input)
-    * [Run](#run)
-    * [Result](#View-Result)
+[//]: # (* [Getting Started]&#40;#getting-started&#41;)
+
+[//]: # (    * [Prerequisites]&#40;#prerequisites&#41;)
+
+[//]: # (    * [Get Repo]&#40;#get-repo&#41;)
+
+[//]: # ()
+[//]: # (* [Run experiment]&#40;#Run-experiment&#41;)
+
+[//]: # (    * [Prepare Input]&#40;#prepare-input&#41;)
+
+[//]: # (    * [Run]&#40;#run&#41;)
+
+[//]: # (    * [Result]&#40;#View-Result&#41;)
 
 ## Getting started
 ### Prerequisite
 Java >= 1.8
-### Get Repo
-``git clone https://github.com/dominhkha/tila.git``
+
 ## Run experiment
 ### Prepare Input
-Create a .txt file containing the soruce code of Tiny Language with following grammars:
-``` 
+Create a .txt file containing the source code of Tiny Language with following grammars:
+```
 Program	        -> begin Statements end EOF
 Statements	-> Statement; Statements
                    | ϵ
@@ -49,10 +56,13 @@ NUMBER = 0|[1..9][0..9]*
 An Example of the input file: [local/input.txt](local/input.txt)
 
 ### Run
-* Compile:  ``make compile``
-* Run : ``make run inputFile={The full path of input file}``
-* Clean: ``make clean``
 
+[//]: # (* Compile:  ``make compile``)
+
+[//]: # (* Run : ``make run inputFile={The full path of input file}``)
+
+[//]: # (* Clean: ``make clean``)
+```java -jar tila.jar <path to input>```
 ### Result
 The results have type, value of each token and the line number where token stays. They will be printed in the console. Such as:
 ```
