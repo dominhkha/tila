@@ -1,4 +1,7 @@
 # Tila Scanner: A Tiny Language Scanner
+Author: Do Minh Kha 
+
+Student ID: 21025094
 ## Overview
 The repo contains source code for Tiny Language Scanner.
 
