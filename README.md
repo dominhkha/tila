@@ -56,7 +56,17 @@ Loop		-> while Expr do begin Statements end
 ID = [a..z]|[A..Z] ([a..z]|[A..Z]|[0..9])*
 NUMBER = 0|[1..9][0..9]*
 ```
-An Example of the input file: [local/input.txt](local/input.txt)
+An Example of the input file in this experiment:
+
+```
+begin
+    int x ; int y ; int subtract ;
+    x = 10 ;
+    y = 10 ;
+    subtract=x-y ;
+    print subtract ;
+end
+```
 
 ### Run
 
