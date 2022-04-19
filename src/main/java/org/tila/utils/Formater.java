@@ -3,9 +3,7 @@ package org.tila.utils;
 import org.tila.scanner.Token;
 import org.tila.scanner.TokenType;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Formater {
@@ -17,7 +15,11 @@ public class Formater {
         return result;
     }
 
+
     public static String expectError(String invalidStr, int line, List<TokenType> tokens, Token gotToken) {
+//        Example: ERROR: Invalid syntax: EXPRESSION in line 5.
+//		            May expect CLOSE_BRACKET. Got "SEMICOLON": {"Type": "SEMICOLON", "Value": ";", "Line": 5}
+
         String invalidSyntaxStr = "Invalid syntax: " + invalidStr + " in line " + line;
         String expectStr;
         String gotStr = "Got " + gotToken.toString();

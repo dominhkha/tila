@@ -7,13 +7,14 @@ import java.util.ArrayList;
 
 public class Program {
     private final Token begin;
-    private final Token end;
     private final ArrayList<Statement> statements;
+    private final Token end;
+
 
     public Program(Token begin, ArrayList<Statement> statements, Token end) {
         this.begin = begin;
-        this.end = end;
         this.statements = statements;
+        this.end = end;
     }
 
     public String toString() {

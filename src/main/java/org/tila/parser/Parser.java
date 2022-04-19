@@ -11,14 +11,8 @@ import org.tila.tree.*;
 import org.tila.utils.FileUtils;
 import org.tila.utils.Formater;
 
-import javax.swing.*;
-import javax.swing.plaf.nimbus.State;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.ObjectOutputStream;
-import java.sql.SQLOutput;
-import java.time.Year;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -182,7 +176,11 @@ public class Parser {
 //        program.print();
 //        System.out.println(program);
         Gson gson = new Gson();
+
         String json = gson.toJson(program);
-        System.out.println(json);
+        json = "{\"Program\":" + json + "}";
+        TilaLogger.INFO("syntax tree: \n" + json);
+
+//        System.out.println(json);
     }
 }

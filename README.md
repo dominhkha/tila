@@ -1,9 +1,9 @@
-# Tila Scanner: A Tiny Language Scanner
+# Tila Scanner: A Tiny Language Parser
 Author: Do Minh Kha 
 
 Student ID: 21025094
 ## Overview
-The repo contains source code for Tiny Language Scanner.
+The repo contains source code for Tiny Language Parser.
 
 [//]: # (## Table of Contents)
 
@@ -60,11 +60,11 @@ An Example of the input file in this experiment:
 
 ```
 begin
-    int x ; int y ; int subtract ;
-    x = 10 ;
-    y = 10 ;
-    subtract=x-y ;
-    print subtract ;
+    int x; int y; int subtract;
+    x = 10;
+    y = 10;
+    subtract=x-y;
+    print subtract;
 end
 ```
 
@@ -77,16 +77,13 @@ end
 [//]: # (* Clean: ``make clean``)
 ```java -jar tila.jar <path to input>```
 ### Result
-The results have type, value of each token and the line number where token stays. They will be printed in the console. Such as:
+The result contains syntax tree of the program as
 ```
-(Type: BEGIN, Value: "begin", Line: 1)
-(Type: INT, Value: "int", Line: 2)
-(Type: ID, Value: "x", Line: 2)
-(Type: SEMICOLON, Value: ";", Line: 2)
-(Type: INT, Value: "int", Line: 2)
+{"Program":{"begin":{"tokenType":"BEGIN","value":"begin","isCheckRegrex":false,"line":1},"statements":[{"type":{"tokenType":"INT","value":"int","isCheckRegrex":false,"line":2},"id":{"token":{"tokenType":"ID","value":"x","isCheckRegrex":false,"line":2}},"statement":"Delc"},{"type":{"tokenType":"INT","value":"int","isCheckRegrex":false,"line":2},"id":{"token":{"tokenType":"ID","value":"y","isCheckRegrex":false,"line":2}},"statement":"Delc"},{"type":{"tokenType":"INT","value":"int","isCheckRegrex":false,"line":2},"id":{"token":{"tokenType":"ID","value":"subtract","isCheckRegrex":false,"line":2}},"statement":"Delc"},{"id":{"tokenType":"ID","value":"x","isCheckRegrex":false,"line":3},
 ...
 ```
-
+Paste the result to https://jsonformatter.org/json-parser to prettify the result. As
+![alt-text-1](local/output/result_img_1.PNG "title-1") ![alt-text-2](local/output/result_img_2.PNG "title-2")
 ### Contributing
 This project welcomes contributions and suggestions.
 ### Contact

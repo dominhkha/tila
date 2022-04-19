@@ -46,16 +46,16 @@ public abstract class Statement {
     }
 
     public static class Print extends Statement {
-        final Token printToken;
+        final Token print;
         final Expr expr;
 
         public Print(Token printToken, Expr expr) {
-            this.printToken = printToken;
+            this.print = printToken;
             this.expr = expr;
         }
 
         public String toString() {
-            return "\"" + NonterminalEnum.PRINT + "\"" + ": {" + this.printToken.toString() + ", " + this.expr.toString() + "}";
+            return "\"" + NonterminalEnum.PRINT + "\"" + ": {" + this.print.toString() + ", " + this.expr.toString() + "}";
         }
     }
 
@@ -63,17 +63,17 @@ public abstract class Statement {
         final Token whileToken;
         final Expr expr;
         final Token doToken;
-        final Token beginToken;
+        final Token begin;
         final ArrayList<Statement> statements;
-        final Token endToken;
+        final Token end;
 
         public Loop(Token whileToken, Expr expr, Token doToken, Token beginToken, ArrayList<Statement> statements, Token endToken) {
             this.whileToken = whileToken;
             this.expr = expr;
             this.doToken = doToken;
-            this.beginToken = beginToken;
+            this.begin = beginToken;
             this.statements = statements;
-            this.endToken = endToken;
+            this.end = endToken;
         }
 
         public String toString() {
@@ -81,10 +81,11 @@ public abstract class Statement {
             result.append(whileToken.toString()).append(", ");
             result.append(expr.toString()).append(", ");
             result.append(doToken.toString()).append(", ");
+            result.append(begin.toString()).append(", ");
             for (Statement statement : statements) {
                 result.append(statement.toString()).append(", ");
             }
-            result.append(endToken.toString());
+            result.append(end.toString());
             return result.toString();
         }
     }
