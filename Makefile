@@ -15,7 +15,7 @@ endef
 prepare:
 	$(call createdir, ${CLASSESDIR})
 compile: prepare
-	javac -d classes ${SRCDIR}\\constants\\*.java ${SRCDIR}\\utils\\*.java ${SRCDIR}\\tilaexception\\*.java ${SRCDIR}\\scanner\\*.java
+	javac -d classes ${SRCDIR}\\constants\\*.java ${SRCDIR}\\lexer\\*.java ${SRCDIR}\\log\\*.java ${SRCDIR}\\parser\\*.java ${SRCDIR}\\scanner\\*.java ${SRCDIR}\\utils\\*.java ${SRCDIR}\\tilaexception\\*.java ${SRCDIR}\\tree\\*.java ${SRCDIR}\\scanner\\*.java
 run:
 	cd ${CLASSESDIR} && java org.tila.scanner.TilaScanner $(inputFile)
 clean:

@@ -9,7 +9,7 @@ public enum TokenType {
     PRINT,
     NUMBER,
     ID,
-    ADD,
+//    ADD,
     MULTIPLY,
     SUBTRACT,
     POW,
@@ -20,4 +20,6 @@ public enum TokenType {
     DO,
     EQUAL,
     SEMICOLON,
+    NONE,
 }
+

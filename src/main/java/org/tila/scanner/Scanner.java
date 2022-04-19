@@ -1,6 +1,7 @@
 package org.tila.scanner;
 
 import org.tila.constants.ConstantToken;
+import org.tila.log.TilaLogger;
 import org.tila.tilaexception.ScannerException;
 import org.tila.utils.FileUtils;
 import org.tila.utils.Formater;
@@ -8,7 +9,7 @@ import org.tila.utils.Formater;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class TilaScanner {
+public class Scanner {
     /**
      * input code as text file
      */
@@ -33,12 +34,16 @@ public class TilaScanner {
      * replace these list of values by additional white space.
      * Example: ';' will be replaced by ' ; '
      */
-    private final ArrayList<String> formatReplacements = new ArrayList<String>(Arrays.asList(ConstantToken.add_token.getValue(),
+//    private final ArrayList<String> formatReplacements = new ArrayList<String>(Arrays.asList(ConstantToken.add_token.getValue(),
+//            ConstantToken.multiply_token.getValue(), ConstantToken.subtract_token.getValue(), ConstantToken.pow_token.getValue(),
+//            ConstantToken.equal_token.getValue(), ConstantToken.open_bracket.getValue(), ConstantToken.close_bracket.getValue(),
+//            ConstantToken.semicolon_token.getValue()));
+    private final ArrayList<String> formatReplacements = new ArrayList<String>(Arrays.asList(
             ConstantToken.multiply_token.getValue(), ConstantToken.subtract_token.getValue(), ConstantToken.pow_token.getValue(),
             ConstantToken.equal_token.getValue(), ConstantToken.open_bracket.getValue(), ConstantToken.close_bracket.getValue(),
             ConstantToken.semicolon_token.getValue()));
 
-    public TilaScanner(String inputCode) {
+    public Scanner(String inputCode) {
         this.inputCode = Formater.replaceWithAdditionBlank(inputCode, this.formatReplacements);
         this.currentIndex = 0;
         this.currentLine = 1;
@@ -48,14 +53,14 @@ public class TilaScanner {
 
     public static void main(String[] args) {
 
-//        String inputFilePath = "D:\\tila\\local\\input.txt";
-        String inputFilePath = args[0];
+        String inputFilePath = "D:\\tila\\local\\input.txt";
+//        String inputFilePath = args[0];
         FileUtils fileUtils = new FileUtils(inputFilePath);
         fileUtils.readFile();
         String inputCode = fileUtils.getContent();
-        TilaScanner tilaScanner = new TilaScanner(inputCode);
-        tilaScanner.readTokens();
-        System.out.println(tilaScanner);
+        Scanner scanner = new Scanner(inputCode);
+        scanner.readTokens();
+        System.out.println(scanner);
     }
 
     public void readTokens() {
@@ -82,7 +87,7 @@ public class TilaScanner {
 
                 // the current word does not match any built-int token
                 if (currentToken == null) {
-                    throw new ScannerException("\"" + currentTokenStr + "\" is not recognized!");
+                    TilaLogger.ERROR("\"" + currentTokenStr + "\" is not recognized in line " + String.valueOf(this.currentLine));
                 }
                 this.tokens.add(currentToken);
             }
@@ -120,6 +125,7 @@ public class TilaScanner {
         }
     }
 
+
     private boolean isEndOfCode() {
         return this.currentIndex >= this.codeLength;
     }
@@ -130,6 +136,13 @@ public class TilaScanner {
             result.append(token.toString()).append("\n");
         }
         return result.toString();
+    }
 
+    public ArrayList<Token> getTokens() {
+        return tokens;
+    }
+
+    public void setTokens(ArrayList<Token> tokens) {
+        this.tokens = tokens;
     }
 }

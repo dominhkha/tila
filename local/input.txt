@@ -1,7 +1,14 @@
 begin
     int x ; int y ; int subtract ;
-    x = 10 ;
-    y = 10 ;
-    subtract=x-y ;
-    print subtract ;
+    x = 10;
+    y = 10;
+    subtract=(x-y) * (x - y);
+    while 0 do
+    begin
+        while 1 do
+            begin
+                x = x -1;
+            end;
+    end;
+    print subtract;
 end

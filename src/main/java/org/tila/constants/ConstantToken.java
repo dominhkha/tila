@@ -14,7 +14,7 @@ public final class ConstantToken {
     public static final Token end_token = new Token(TokenType.END, "end", false);
     public static final Token print_token = new Token(TokenType.PRINT, "print", false);
 
-    public static final Token add_token = new Token(TokenType.ADD, "+", false);
+//    public static final Token add_token = new Token(TokenType.ADD, "+", false);
     public static final Token multiply_token = new Token(TokenType.MULTIPLY, "*", false);
     public static final Token subtract_token = new Token(TokenType.SUBTRACT, "-", false);
     public static final Token pow_token = new Token(TokenType.POW, "^", false);
@@ -36,6 +36,6 @@ public final class ConstantToken {
      * List of built-in tokens ordered by text representation priority.
      * For example, print_token must be ordered before id_token
      */
-    public static final ArrayList<Token> tokenList = new ArrayList<Token>(Arrays.asList(begin_token, end_token, print_token, add_token,
+    public static final ArrayList<Token> tokenList = new ArrayList<Token>(Arrays.asList(begin_token, end_token, print_token,
             multiply_token, subtract_token, pow_token, int_token, open_bracket, close_bracket, while_token, do_token, semicolon_token, equal_token, number_token, id_token));
 }

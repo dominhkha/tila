@@ -71,6 +71,6 @@ public class Token {
     }
 
     public String toString() {
-        return "(Type: " + this.getTokenType() + ", Value: \"" + this.getValue() + "\"" + ", Line: " + String.valueOf(this.line) + ")";
+        return "\"" + this.tokenType.toString() +"\""+ ": {\"Type\": \"" + this.getTokenType().toString() + "\", \"Value\": \"" + this.getValue() + "\"" + ", \"Line\": " + String.valueOf(this.line) + "}";
     }
 }
