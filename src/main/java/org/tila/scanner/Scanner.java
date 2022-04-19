@@ -76,11 +76,11 @@ public class Scanner {
                     Token t = ConstantToken.tokenList.get(i);
                     if (t.isCheckRegrex()) {
                         if (currentTokenStr.matches(t.getValue())) {
-                            currentToken = new Token(t.getTokenType(), currentTokenStr, this.currentLine);
+                            currentToken = new Token(t.getTokenType(), currentTokenStr, this.currentLine, t.isCheckRegrex());
                             break;
                         }
                     } else if (currentTokenStr.equals(t.getValue())) {
-                        currentToken = new Token(t.getTokenType(), currentTokenStr, this.currentLine);
+                        currentToken = new Token(t.getTokenType(), currentTokenStr, this.currentLine, t.isCheckRegrex());
                         break;
                     }
                 }

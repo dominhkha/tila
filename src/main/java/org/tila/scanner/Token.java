@@ -31,6 +31,14 @@ public class Token {
         this.line = 0;
     }
 
+    public Token(TokenType tokenType, String value, int line, boolean isCheckRegrex) {
+        this.tokenType = tokenType;
+        this.value = value;
+        this.line =line;
+        this.isCheckRegrex = isCheckRegrex;
+        this.line = 0;
+    }
+
     public Token(TokenType tokenType, String value, int line) {
         this.tokenType = tokenType;
         this.value = value;
@@ -71,6 +79,6 @@ public class Token {
     }
 
     public String toString() {
-        return "\"" + this.tokenType.toString() +"\""+ ": {\"Type\": \"" + this.getTokenType().toString() + "\", \"Value\": \"" + this.getValue() + "\"" + ", \"Line\": " + String.valueOf(this.line) + "}";
+        return "\"" + this.tokenType.toString() + "\"" + ": {\"Type\": \"" + this.getTokenType().toString() + "\", \"Value\": \"" + this.getValue() + "\"" + ", \"Line\": " + String.valueOf(this.line) + "}";
     }
 }

@@ -27,19 +27,19 @@ public abstract class Statement {
     public static class Assigment extends Statement {
         final Token id;
         final Token equalOp;
-        final Expr rightValue;
+        final Expr expr;
 
         public Assigment(Token id, Token equalOp, Expr rightValue) {
             this.id = id;
             this.equalOp = equalOp;
-            this.rightValue = rightValue;
+            this.expr = rightValue;
         }
 
         public String toString() {
             StringBuilder result = new StringBuilder("\"" + NonterminalEnum.ASSIGNMENT + "\"" + ": {");
             result.append(this.id.toString()).append(", ");
             result.append(this.equalOp.toString()).append(", ");
-            result.append(this.rightValue.toString()).append(", ");
+            result.append(this.expr.toString()).append(", ");
             result.append("}");
             return result.toString();
         }

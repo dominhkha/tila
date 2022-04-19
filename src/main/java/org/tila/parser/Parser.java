@@ -43,7 +43,7 @@ public class Parser {
             Token openBracket = this.lexer.consume(TokenType.OPEN_BRACKET, nonterminalEnum);
             Expr expr = this.parseExpr();
             Token closeBracket = this.lexer.consume(TokenType.CLOSE_BRACKET, nonterminalEnum);
-            return new Expr.Grouping(openBracket, expr, closeBracket);
+            return new Expr.GroupingExpr(openBracket, expr, closeBracket);
         }
 
 //        if no expected tokens match
@@ -88,7 +88,7 @@ public class Parser {
         while (this.lexer.match(TokenType.MULTIPLY, TokenType.SUBTRACT, TokenType.POW)) {
             Token operator = this.lexer.consumes(NonterminalEnum.EXPRESSION, TokenType.MULTIPLY, TokenType.SUBTRACT, TokenType.POW);
             Expr right = this.primary(NonterminalEnum.EXPRESSION);
-            expr = new Expr.Binary(expr, operator, right);
+            expr = new Expr.NormalExpr(expr, operator, right);
         }
 
         return expr;

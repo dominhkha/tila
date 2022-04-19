@@ -4,12 +4,12 @@ import org.tila.scanner.Token;
 import org.tila.scanner.TokenType;
 
 public abstract class Expr {
-    public static class Binary extends Expr {
+    final String exprType = this.getClass().getSimpleName();
+    public static class NormalExpr extends Expr {
         final Expr left;
         final Token operator;
         final Expr right;
-
-        public Binary(Expr left, Token operator, Expr right) {
+        public NormalExpr(Expr left, Token operator, Expr right) {
             this.left = left;
             this.operator = operator;
             this.right = right;
@@ -21,7 +21,6 @@ public abstract class Expr {
 
     public static class ID extends Expr {
         final Token token;
-
         public ID(Token token) {
             this.token = token;
         }
@@ -33,7 +32,6 @@ public abstract class Expr {
 
     public static class Number extends Expr {
         final Token value;
-
         public Number(Token value) {
             this.value = value;
         }
@@ -44,12 +42,12 @@ public abstract class Expr {
     }
 
 
-    public static class Grouping extends Expr {
-        final Expr expression;
+    public static class GroupingExpr extends Expr {
         final Token openBracket;
+        final Expr expression;
         final Token closeBracket;
 
-        public Grouping(Token openBracket, Expr expression, Token closeBracket) {
+        public GroupingExpr(Token openBracket, Expr expression, Token closeBracket) {
             this.expression = expression;
             this.openBracket = openBracket;
             this.closeBracket = closeBracket;
