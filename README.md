@@ -1,4 +1,4 @@
-# Tila Scanner: A Tiny Language Parser
+# Tila: A Tiny Language Parser
 Author: Do Minh Kha 
 
 Student ID: 21025094
